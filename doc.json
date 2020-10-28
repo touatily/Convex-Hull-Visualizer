@@ -1,0 +1,22 @@
+[
+    {
+        "algo_name":"Gift wrapping algorithm (Jarvis march)",
+        "description":"Animation of the gift wrapping algorithm. The red lines are already placed lines, the Black line is the current best guess for the new line, and the green line is the next guess",
+        "complexity":"O(n h)"
+    },
+    {
+        "algo_name":"Graham scan",
+        "description":"Graham's scan is a method of finding the convex hull of a finite set of points in the plane with time complexity O(n log n). It is named after Ronald Graham, who published the original algorithm in 1972. The algorithm finds all vertices of the convex hull ordered along its boundary. It uses a stack to detect and remove concavities in the boundary efficiently",
+        "complexity":"O(n log n) "
+    },
+    {
+        "algo_name":"Quickhull",
+        "description":"Quickhull is a method of computing the convex hull of a finite set of points in n-dimensional space. It uses a divide and conquer approach similar to that of quicksort, from which its name derives. Its worst case complexity for 2-dimensional and 3-dimensional space is considered to be O ( n log ⁡ ( r ) ), where \"n\" is the number of input points and \"r\" is the number of processed points",
+        "complexity":"O(n log r)"
+    },
+    {
+        "algo_name":"Monotone Chain",
+        "description":"",
+        "complexity":"O(n log n)"
+    }
+]
