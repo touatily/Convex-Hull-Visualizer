@@ -3,6 +3,9 @@ from tkinter import ttk
 import convexHull as ch
 import math
 import json
+from tkinter import filedialog
+from tkinter import messagebox as mb
+import csv
 
 
 class Window(tk.Tk):
@@ -27,6 +30,16 @@ class Window(tk.Tk):
 
         self.plan.grid_columnconfigure(0, weight=1)
         
+        menubar = tk.Menu(self)
+        filemenu = tk.Menu(menubar, tearoff=0)
+        filemenu.add_command(label="Open", command=self.load, accelerator="Ctrl+O")
+        filemenu.add_command(label="Save", command=self.save, accelerator="Ctrl+S")
+        filemenu.add_separator()
+        filemenu.add_command(label="Exit", command=self.exit, accelerator="Ctrl+Q")
+        menubar.add_cascade(label="File", menu=filemenu)
+        
+        self.config(menu=menubar)
+        
         
         # canvas configuration
         self.canvas = tk.Canvas(self.plan, bg = "white",
@@ -42,6 +55,9 @@ class Window(tk.Tk):
         self.canvas.bind("<ButtonRelease-1>", self.unpickPoint)
         
         self.bind_all("<Control-x>", self.deleteAll)
+        self.bind_all("<Control-s>", self.save)
+        self.bind_all("<Control-o>", self.load)
+        self.bind_all("<Control-x>", self.exit)
         
         # control buttons
         
@@ -79,6 +95,38 @@ class Window(tk.Tk):
         self.description_val = tk.Label(self.plan2, textvariable=self.description, 
                     anchor="w", justify="left", wraplength=130)
         self.description_val.pack(ipadx=15, padx=10)  
+        
+    
+    def save(self, event=None):
+        S = [(int(self.canvas.coords(e)[0]+3), int(self.canvas.coords(e)[1]+3))
+                for e in self.canvas.find_withtag("point")]
+        
+        ftypes = [('CSV files', '.csv')]
+        fname = filedialog.asksaveasfilename(filetypes=ftypes, defaultextension=".csv",
+                                             title="Save as CSV file", initialdir = "./saves/")
+
+        if not fname:
+            return
+        with open(fname, "w", newline="") as f:
+            writer = csv.writer(f, delimiter=",")
+            writer.writerows(S)
+        mb.showinfo('Action completed', 'The configuration has been successfully saved!')
+        
+    def load(self, event=None):
+        fname = filedialog.askopenfilename(filetypes=[('CSV files', '.csv')], defaultextension=".csv",
+            title="Save configuration as CSV file", initialdir = "./saves/")
+        if not fname:
+            return
+        self.canvas.delete("all")
+        with open(fname, "r") as f:
+            reader = csv.reader(f, delimiter=",")
+            l = list(reader)
+            fileContent = [[int(ee) for ee in e] for e in l]
+        
+        for e in l:
+            x = int(e[0])
+            y = int(e[1])
+            self.canvas.create_oval(x-3, y-3, x+3, y+3, fill="blue", tag=f"point {str(x)}_{str(y)}")
         
         
     def addPoint(self, event=None):
@@ -134,3 +182,8 @@ class Window(tk.Tk):
             ch.ConvexHullSolver.algoMonotoneChain(self.canvas, self.speed)
         else:
             pass
+
+
+
+    def exit(self, e=None):
+        self.destroy()

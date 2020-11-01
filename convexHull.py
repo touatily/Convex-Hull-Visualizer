@@ -126,9 +126,7 @@ class ConvexHullSolver:
         l2 = ConvexHullSolver.findHull(S2, C, Q, canvas, speed)
         
         return l1 + [C] + l2
-        
-        
-        
+
         
     @classmethod
     def algoQuickhull(cls, canvas=None, speed=None):

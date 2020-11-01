@@ -3,5 +3,4 @@
 
 import window as win
 
-
 win.Window().mainloop()
