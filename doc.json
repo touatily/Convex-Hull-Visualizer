@@ -16,7 +16,7 @@
     },
     {
         "algo_name":"Monotone Chain",
-        "description":"",
+        "description":"Published in 1979 by A. M. Andrew. The algorithm can be seen as a variant of Graham scan which sorts the points lexicographically by their coordinates. When the input is already sorted, the algorithm takes O(n) time.",
         "complexity":"O(n log n)"
     }
 ]

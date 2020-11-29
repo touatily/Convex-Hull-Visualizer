@@ -83,7 +83,8 @@ class Window(tk.Tk):
                                      command=self.simulate)
         self.simulateBtn.pack(ipadx=15, padx=10, ipady=5, pady=5)
 
-        self.complexity_lbl = tk.Label(self.plan2, text="Complexité")
+        self.complexity_lbl = tk.Label(self.plan2, text="Complexity",
+                                       font='Helvetica 14 bold')
         self.complexity_lbl.pack(ipadx=15, padx=10)
 
         self.complexity = tk.StringVar()
@@ -94,7 +95,8 @@ class Window(tk.Tk):
                                        wraplength=130)
         self.complexity_val.pack(ipadx=15, padx=10)
 
-        self.description_lbl = tk.Label(self.plan2, text="Description")
+        self.description_lbl = tk.Label(self.plan2, text="Description",
+                                        font='Helvetica 14 bold')
         self.description_lbl.pack(ipadx=15, padx=10)
 
         self.description = tk.StringVar()
