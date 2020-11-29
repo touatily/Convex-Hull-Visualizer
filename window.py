@@ -40,6 +40,7 @@ class Window(tk.Tk):
         filemenu.add_command(label="Exit", command=self.exit,
                              accelerator="Ctrl+Q")
         menubar.add_cascade(label="File", menu=filemenu)
+        menubar.add_command(label="About", command=self.showAbout)
 
         self.config(menu=menubar)
 
@@ -56,7 +57,7 @@ class Window(tk.Tk):
         self.canvas.bind("<Shift-B1-Motion>", self.movePoint)
         self.canvas.bind("<ButtonRelease-1>", self.unpickPoint)
 
-        self.bind_all("<Control-x>", self.deleteAll)
+        self.bind_all("<Control-c>", self.deleteAll)
         self.bind_all("<Control-s>", self.save)
         self.bind_all("<Control-o>", self.load)
         self.bind_all("<Control-x>", self.exit)
@@ -104,6 +105,9 @@ class Window(tk.Tk):
                                         wraplength=130)
         self.description_val.pack(ipadx=15, padx=10)
 
+    def showAbout(self):
+        mb.showinfo("About", "This application was developped by Lyes Touati")
+
     def save(self, event=None):
         S = [(int(self.canvas.coords(e)[0]+3), int(self.canvas.coords(e)[1]+3))
              for e in self.canvas.find_withtag("point")]
@@ -136,7 +140,7 @@ class Window(tk.Tk):
             lines = list(reader)
             fileContent = [[int(ee) for ee in e] for e in lines]
 
-        for e in l:
+        for e in lines:
             x = int(e[0])
             y = int(e[1])
             self.canvas.create_oval(x-3, y-3, x+3, y+3, fill="blue",
