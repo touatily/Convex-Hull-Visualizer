@@ -30,7 +30,7 @@ The application offers some shortcuts for the ease of use:
 
 ## Pictures
 
-![Gift wrapping Algorithm](https://github.com/touatily/Convex-Hull-Visualizer/blob/master/pictures/CaptureGift.png)
-![Graham scan Algorithm](https://github.com/touatily/Convex-Hull-Visualizer/blob/master/pictures/CaptureGraham.png)
-![Quickhull Algorithm](https://github.com/touatily/Convex-Hull-Visualizer/blob/master/pictures/CaptureQuickhull.png)
-![Monotone chain Algorithm](https://github.com/touatily/Convex-Hull-Visualizer/blob/master/pictures/CaptureMonotone.png)
+![Gift wrapping Algorithm](https://github.com/touatily/Convex-Hull-Visualizer/blob/master/pictures/CaptureGift.PNG)
+![Graham scan Algorithm](https://github.com/touatily/Convex-Hull-Visualizer/blob/master/pictures/CaptureGraham.PNG)
+![Quickhull Algorithm](https://github.com/touatily/Convex-Hull-Visualizer/blob/master/pictures/CaptureQuickhull.PNG)
+![Monotone chain Algorithm](https://github.com/touatily/Convex-Hull-Visualizer/blob/master/pictures/CaptureMonotone.PNG)
